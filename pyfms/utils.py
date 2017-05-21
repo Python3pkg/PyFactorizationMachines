@@ -6,7 +6,7 @@ def xrange(*args, **kwargs):
         import builtins
         return builtins.range(*args, **kwargs)
     elif major_version == 2:
-        import __builtin__
-        return __builtin__.xrange(*args, **kwargs)
+        import builtins
+        return builtins.xrange(*args, **kwargs)
     else:
         raise RuntimeError("Unsupported version of Python.")

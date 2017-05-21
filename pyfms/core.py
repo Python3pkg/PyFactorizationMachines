@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 
 import abc
 import itertools
@@ -13,30 +13,26 @@ from . import utils
 Weights = namedtuple('Weights', ['w0', 'w1', 'v'])
 
 
-class Optimizer(object):
-    __metaclass__ = abc.ABCMeta
+class Optimizer(object, metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def update(self, cost, params, epoch):
         raise NotImplementedError()
 
 
-class Error(object):
-    __metaclass__ = abc.ABCMeta
+class Error(object, metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def apply(self, y, y_hat):
         raise NotImplementedError()
 
 
-class Regularizer(object):
-    __metaclass__ = abc.ABCMeta
+class Regularizer(object, metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def regularize(self, loss, w0, w1, v):
         raise NotImplementedError()
 
 
 # This is used for transforming PyFactorizationMachine's output
-class Transformer(object):
-    __metaclass__ = abc.ABCMeta
+class Transformer(object, metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def transform(self, y_hat):
         raise NotImplementedError()
